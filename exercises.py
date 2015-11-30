@@ -375,7 +375,19 @@ def character_statistics(file_name) :
     Use the isalpha() method to figure out
     whether the character is in the alphabet.
     """
-    return None
+    with open(file_name) as infile :
+        text = infile.read()
+    chars = list()
+    counts = list()
+    for c in text.lower() :
+        if c.isalpha() :
+            if c not in chars :
+                chars.append(c)
+                counts.append(0)
+            else :
+                counts[chars.index(c)] += 1
+    return (chars[counts.index(max(counts))], chars[counts.index(min(counts))])
+        
 
 
 def test_character_statistics() :
