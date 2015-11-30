@@ -226,7 +226,14 @@ def get_reverse_complement(s) :
     Return the reverse complement of string s
     (complement reversed in order).
     """
-    return None
+    nucleo = 'actg'
+    complement = 'tgac'
+    pairing = dict(zip(nucleo, complement))
+
+    scompl = ''
+    for i in range(len(s)) :
+        scompl += pairing[s[i].lower()].upper()
+    return scompl[::-1]
 
 
 def test_get_reverse_complement() :
