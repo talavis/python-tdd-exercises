@@ -161,7 +161,13 @@ def base_pair(c) :
     of the base pair. If the base is not recognized,
     return 'unknown'.
     """
-    return None
+    nucleo = 'actg'
+    complement = 'tgac'
+    pairing = dict(zip(nucleo, complement))
+    
+    if c.lower() in 'actg' :
+        return pairing[c.lower()]
+    return 'unknown'
 
 
 def test_base_pair() :
