@@ -1,39 +1,42 @@
+#!/usr/bin/env python3
 
-def reverse_list(l):
+def reverse_list(l) :
     """
     Reverses order of elements in list l.
     """
-    return None
+    return l[::-1]
 
 
-def test_reverse_list():
+def test_reverse_list() :
     assert reverse_list([1, 2, 3, 4, 5]) == [5, 4, 3, 2, 1]
 
 
 # ------------------------------------------------------------------------------
 
-def reverse_string(s):
+def reverse_string(s) :
     """
     Reverses order of characters in string s.
     """
-    return None
+    return s[::-1]
 
 
-def test_reverse_string():
+def test_reverse_string() :
     assert reverse_string("foobar") == "raboof"
 
 
 # ------------------------------------------------------------------------------
 
-def is_english_vowel(c):
+def is_english_vowel(c) :
     """
     Returns True if c is an english vowel
     and False otherwise.
     """
-    return None
+    if c.upper() in ['A', 'E', 'I', 'O', 'U', 'Y'] :
+        return True
+    else :
+        return False
 
-
-def test_is_english_vowel():
+def test_is_english_vowel() :
     assert is_english_vowel('a')
     assert is_english_vowel('e')
     assert is_english_vowel('i')
@@ -53,14 +56,19 @@ def test_is_english_vowel():
 
 # ------------------------------------------------------------------------------
 
-def count_num_vowels(s):
+def count_num_vowels(s) :
     """
     Returns the number of vowels in a string s.
     """
-    return None
+    s = s.upper()
+    VOWELS = ['A', 'E', 'I', 'O', 'U', 'Y']
+    amount = 0
+    for i in range(len(VOWELS)) :
+        amount += s.count(VOWELS[i])
+    return amount
 
 
-def test_count_num_vowels():
+def test_count_num_vowels() :
     sentence = "hey ho let's go"
     assert count_num_vowels(sentence) == 5
     sentence = "HEY ho let's GO"
@@ -75,52 +83,62 @@ def test_count_num_vowels():
 
 # ------------------------------------------------------------------------------
 
-def histogram(l):
+def histogram(l) :
     """
     Converts a list of integers into a simple string histogram.
     """
-    return None
+    for i in range(len(l)) :
+        l[i] = l[i] * '#'
+    return '\n'.join(l)
 
-
-def test_histogram():
+def test_histogram() :
     assert histogram([2, 5, 1]) == '##\n#####\n#'
 
 
 # ------------------------------------------------------------------------------
 
-def get_word_lengths(s):
+def get_word_lengths(s) :
     """
     Returns a list of integers representing
     the word lengths in string s.
     """
-    return None
+    words = s.split()
+    for i in range(len(words)) :
+        words[i] = len(words[i])
+    return words
 
 
-def test_get_word_lengths():
+def test_get_word_lengths() :
     text = "Three tomatoes are walking down the street"
     assert get_word_lengths(text) == [5, 8, 3, 7, 4, 3, 6]
 
 
 # ------------------------------------------------------------------------------
 
-def find_longest_word(s):
+def find_longest_word(s) :
     """
     Returns the longest word in string s.
     In case there are several, return the first.
     """
-    return None
+    words = s.split()
+    length = 0
+    longest = len(words)
+    for i in range(len(words)) :
+        if len(words[i]) > length :
+            length = len(words[i])
+            longest = i
+    return words[longest]
 
 
-def test_find_longest_word():
+def test_find_longest_word() :
     text = "Three tomatoes are walking down the street"
     assert find_longest_word(text) == "tomatoes"
     text = "foo foo1 foo2 foo3"
     assert find_longest_word(text) == "foo1"
 
-
 # ------------------------------------------------------------------------------
 
-def validate_dna(s):
+def validate_dna(s) :
     """
     Return True if the DNA string only contains characters
     a, c, t, or g (lower or uppercase). False otherwise.
@@ -128,14 +146,14 @@ def validate_dna(s):
     return None
 
 
-def test_validate_dna():
+def test_validate_dna() :
     assert validate_dna('CCGGAAGAGCTTACTTAGccggaagagcttacttag')
     assert not validate_dna('xCCGGAAGAGCTTACTTAGccggaagagcttacttag')
 
 
 # ------------------------------------------------------------------------------
 
-def base_pair(c):
+def base_pair(c) :
     """
     Return the corresponding character (lowercase)
     of the base pair. If the base is not recognized,
@@ -144,7 +162,7 @@ def base_pair(c):
     return None
 
 
-def test_base_pair():
+def test_base_pair() :
     assert base_pair('a') == 't'
     assert base_pair('t') == 'a'
     assert base_pair('c') == 'g'
@@ -159,7 +177,7 @@ def test_base_pair():
 
 # ------------------------------------------------------------------------------
 
-def transcribe_dna_to_rna(s):
+def transcribe_dna_to_rna(s) :
     """
     Return string s with each letter T replaced by U.
     Result is always uppercase.
@@ -167,14 +185,14 @@ def transcribe_dna_to_rna(s):
     return None
 
 
-def test_transcribe_dna_to_rna():
+def test_transcribe_dna_to_rna() :
     dna = 'CCGGAAGAGCTTACTTAGccggaagagcttacttag'
     assert transcribe_dna_to_rna(dna) == 'CCGGAAGAGCUUACUUAGCCGGAAGAGCUUACUUAG'
 
 
 # ------------------------------------------------------------------------------
 
-def get_complement(s):
+def get_complement(s) :
     """
     Return the DNA complement in uppercase
     (A -> T, T-> A, C -> G, G-> C).
@@ -182,14 +200,14 @@ def get_complement(s):
     return None
 
 
-def test_get_complement():
+def test_get_complement() :
     assert get_complement('CCGGAAGAGCTTACTTAG') == 'GGCCTTCTCGAATGAATC'
     assert get_complement('ccggaagagcttacttag') == 'GGCCTTCTCGAATGAATC'
 
 
 # ------------------------------------------------------------------------------
 
-def get_reverse_complement(s):
+def get_reverse_complement(s) :
     """
     Return the reverse complement of string s
     (complement reversed in order).
@@ -197,21 +215,21 @@ def get_reverse_complement(s):
     return None
 
 
-def test_get_reverse_complement():
+def test_get_reverse_complement() :
     assert get_reverse_complement('CCGGAAGAGCTTACTTAG') == 'CTAAGTAAGCTCTTCCGG'
     assert get_reverse_complement('ccggaagagcttacttag') == 'CTAAGTAAGCTCTTCCGG'
 
 
 # ------------------------------------------------------------------------------
 
-def remove_substring(substring, string):
+def remove_substring(substring, string) :
     """
     Returns string with all occurrences of substring removed.
     """
     return None
 
 
-def test_remove_substring():
+def test_remove_substring() :
     assert remove_substring('GAA', 'CCGGAAGAGCTTACTTAG') == 'CCGGAGCTTACTTAG'
     assert remove_substring('CCG', 'CCGGAAGAGCTTACTTAG') == 'GAAGAGCTTACTTAG'
     assert remove_substring('TAG', 'CCGGAAGAGCTTACTTAG') == 'CCGGAAGAGCTTACT'
@@ -220,7 +238,7 @@ def test_remove_substring():
 
 # ------------------------------------------------------------------------------
 
-def get_position_indices(triplet, dna):
+def get_position_indices(triplet, dna) :
     """
     Returns list of position indices for a specific triplet (3-mer)
     in a DNA sequence. We start counting from 0
@@ -229,14 +247,14 @@ def get_position_indices(triplet, dna):
     return None
 
 
-def test_get_position_indices():
+def test_get_position_indices() :
     assert get_position_indices('GAA', 'CCGGAAGAGCTTACTTAG') == [1]
     assert get_position_indices('GAA', 'CCGGAAGAGCTTACTTAGGAAGAA') == [1, 6, 7]
 
 
 # ------------------------------------------------------------------------------
 
-def get_3mer_usage_chart(s):
+def get_3mer_usage_chart(s) :
     """
     This routine implements a 'sliding window'
     and extracts all possible consecutive 3-mers.
@@ -248,7 +266,7 @@ def get_3mer_usage_chart(s):
     return None
 
 
-def test_get_3mer_usage_chart():
+def test_get_3mer_usage_chart() :
     s = 'CCGGAAGAGCTTACTTAGGAAGAA'
     result = []
     result.append(('AAG', 2))
@@ -271,7 +289,7 @@ def test_get_3mer_usage_chart():
 
 # ------------------------------------------------------------------------------
 
-def read_column(file_name, column_number):
+def read_column(file_name, column_number) :
     """
     Reads column column_number from file file_name
     and returns the values as floats in a list.
@@ -279,7 +297,7 @@ def read_column(file_name, column_number):
     return None
 
 
-def test_read_column():
+def test_read_column() :
 
     import tempfile
     import os
@@ -306,7 +324,7 @@ def test_read_column():
 
 # ------------------------------------------------------------------------------
 
-def character_statistics(file_name):
+def character_statistics(file_name) :
     """
     Reads text from file file_name, then
     lowercases the text, and then returns
@@ -318,7 +336,7 @@ def character_statistics(file_name):
     return None
 
 
-def test_character_statistics():
+def test_character_statistics() :
 
     import tempfile
     import os
@@ -375,16 +393,16 @@ Be all my sins remember'd."""
 
 # ------------------------------------------------------------------------------
 
-def pythagorean_triples(n):
+def pythagorean_triples(n) :
     """
     Returns list of all unique pythagorean triples
     (a, b, c) where a < b < c <= n.
     """
     l = []
     # loop over all a < b < c <= n
-    for c in range(1, n + 1):
-        for b in range(1, c):
-            for a in range(1, b):
+    for c in range(1, n + 1) :
+        for b in range(1, c) :
+            for a in range(1, b) :
                 if a*a + b*b == c*c:
                     l.append((a, b, c))
     return l
@@ -392,5 +410,5 @@ def pythagorean_triples(n):
 
 # ------------------------------------------------------------------------------
 
-def test_pythagorean_triples():
+def test_pythagorean_triples() :
     pass  # so far we do not test anything, check also test coverage
