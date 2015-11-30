@@ -465,4 +465,7 @@ def pythagorean_triples(n) :
 # ------------------------------------------------------------------------------
 
 def test_pythagorean_triples() :
-    pass  # so far we do not test anything, check also test coverage
+    assert pythagorean_triples(1) == []
+    assert pythagorean_triples(5) == [(3, 4, 5)]
+    assert pythagorean_triples(9) == [(3, 4, 5)]
+    assert pythagorean_triples(13) == [(3, 4, 5), (6, 8, 10), (5, 12, 13)]
