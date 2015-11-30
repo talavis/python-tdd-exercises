@@ -204,7 +204,14 @@ def get_complement(s) :
     Return the DNA complement in uppercase
     (A -> T, T-> A, C -> G, G-> C).
     """
-    return None
+    nucleo = 'actg'
+    complement = 'tgac'
+    pairing = dict(zip(nucleo, complement))
+
+    scompl = ''
+    for i in range(len(s)) :
+        scompl += pairing[s[i].lower()].upper()
+    return scompl
 
 
 def test_get_complement() :
