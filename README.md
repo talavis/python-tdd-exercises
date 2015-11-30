@@ -3,7 +3,7 @@
 ## Make these badges green
 
 [![Build Status](https://travis-ci.org/talavis/python-tdd-exercises.svg?branch=master)](https://travis-ci.org/talavis/python-tdd-exercises/builds)
-[![Coverage Status](https://coveralls.io/repos/talavis/python-tdd-exercises/badge.png?branch=master)](https://coveralls.io/r/talavis/python-tdd-exercises?branch=master)
+[![Coverage Status](https://coveralls.io/repos/talavis/python-tdd-exercises/badge.svg?branch=master&service=github)](https://coveralls.io/github/talavis/python-tdd-exercises?branch=master)
 
 After you fork, edit this `README.md` and rename "talavis" to your GitHub username
 or namespace to make the badges point to your fork.
