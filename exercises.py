@@ -289,7 +289,17 @@ def get_3mer_usage_chart(s) :
     The list is alphabetically sorted by the name
     of the 3-mer.
     """
-    return None
+    trimers = list()
+    for i in range(len(s)) :
+        t = s[i:i+3]
+        if len(t) == 3 :
+            trimers.append(t)
+    uTrimers = tuple(set(trimers))
+    counts = list()
+    for i in range(len(uTrimers)) :
+        counts.append(trimers.count(uTrimers[i]))
+    return sorted(list(zip(uTrimers, counts)))
+
 
 
 def test_get_3mer_usage_chart() :
